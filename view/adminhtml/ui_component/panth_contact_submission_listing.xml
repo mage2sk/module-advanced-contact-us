@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">panth_contact_submission_listing.panth_contact_submission_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>panth_contact_submission_columns</spinner>
+        <deps>
+            <dep>panth_contact_submission_listing.panth_contact_submission_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="panth_contact_submission_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">submission_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Panth_AdvancedContactUs::submission_view</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="panth_contact_submission_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>submission_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected submissions?</message>
+                        <title translate="true">Delete Submissions</title>
+                    </confirm>
+                    <url path="panthcontact/submission/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="panth_contact_submission_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>submission_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="submission_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="name" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="email" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="subject" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Subject</label>
+            </settings>
+        </column>
+        <column name="telephone" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Phone</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="status" class="Panth\AdvancedContactUs\Ui\Component\Listing\Column\Status" sortOrder="60">
+            <settings>
+                <filter>select</filter>
+                <label translate="true">Status</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <dataType>select</dataType>
+                <options>
+                    <option name="new" xsi:type="array">
+                        <item name="value" xsi:type="string">0</item>
+                        <item name="label" xsi:type="string" translate="true">New</item>
+                    </option>
+                    <option name="read" xsi:type="array">
+                        <item name="value" xsi:type="string">1</item>
+                        <item name="label" xsi:type="string" translate="true">Read</item>
+                    </option>
+                    <option name="replied" xsi:type="array">
+                        <item name="value" xsi:type="string">2</item>
+                        <item name="label" xsi:type="string" translate="true">Replied</item>
+                    </option>
+                </options>
+            </settings>
+        </column>
+        <column name="ip_address" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">IP Address</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store" sortOrder="75">
+            <settings>
+                <filter>store</filter>
+                <label translate="true">Store</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" sortOrder="80">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Submitted</label>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Panth\AdvancedContactUs\Ui\Component\Listing\Column\Actions" sortOrder="100">
+            <settings>
+                <indexField>submission_id</indexField>
+                <label translate="true">Actions</label>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,27 @@
+{
+    "panth_contact_submission": {
+        "column": {
+            "submission_id": true,
+            "name": true,
+            "email": true,
+            "telephone": true,
+            "subject": true,
+            "message": true,
+            "custom_fields": true,
+            "status": true,
+            "ip_address": true,
+            "user_agent": true,
+            "store_id": true,
+            "created_at": true
+        },
+        "index": {
+            "PANTH_CONTACT_SUBMISSION_EMAIL": true,
+            "PANTH_CONTACT_SUBMISSION_STATUS": true,
+            "PANTH_CONTACT_SUBMISSION_STORE_ID": true,
+            "PANTH_CONTACT_SUBMISSION_CREATED_AT": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="panth" translate="label" sortOrder="400">
+            <label>Panth Extensions</label>
+        </tab>
+        <section id="panth_advancedcontact" translate="label" sortOrder="170"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Advanced Contact Us</label>
+            <tab>panth</tab>
+            <resource>Panth_AdvancedContactUs::config</resource>
+
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Title</label>
+                </field>
+                <field id="success_message" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Success Message</label>
+                </field>
+                <field id="show_info" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Contact Info Sidebar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="contact_info" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Contact Info (Sidebar)</label>
+                <field id="email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Address</label>
+                    <validate>validate-email</validate>
+                </field>
+                <field id="phone" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone Number</label>
+                </field>
+                <field id="address" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Address</label>
+                </field>
+                <field id="hours" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Business Hours</label>
+                </field>
+            </group>
+
+            <group id="fields" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Form Fields</label>
+                <field id="show_phone" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Phone Field</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="phone_required" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone Required</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_subject" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Subject Field</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="subject_required" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Subject Required</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_fields" translate="label comment" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Fields</label>
+                    <frontend_model>Panth\AdvancedContactUs\Block\Adminhtml\Form\Field\CustomFields</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>Add extra fields to your contact form. Type: text, textarea, select, radio, checkbox, email, tel. Required: 1 for yes, 0 for no. Options: comma-separated values for select/radio.</comment>
+                </field>
+            </group>
+
+            <group id="email" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Settings</label>
+                <field id="recipient_email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Admin Notification Email</label>
+                    <validate>validate-email</validate>
+                </field>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender Email Identity</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="send_confirmation" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Customer Confirmation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="protection" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Bot Protection</label>
+                <field id="honeypot" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Honeypot</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Hidden field that traps bots — no impact on real users.</comment>
+                </field>
+                <field id="rate_limit" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Rate Limiting</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Limit submissions per IP address per hour.</comment>
+                </field>
+                <field id="max_per_hour" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Submissions Per Hour (per IP)</label>
+                    <validate>validate-digits</validate>
+                    <depends>
+                        <field id="rate_limit">1</field>
+                    </depends>
+                </field>
+                <field id="min_time" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Form Fill Time (seconds)</label>
+                    <validate>validate-digits</validate>
+                    <comment>Reject submissions faster than this (bots fill forms instantly). Default: 2 seconds.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

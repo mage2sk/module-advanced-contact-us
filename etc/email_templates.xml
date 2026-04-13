@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="panth_advancedcontact_admin_notification"
+              label="Panth Contact — Admin Notification"
+              file="admin_notification.html"
+              type="html"
+              module="Panth_AdvancedContactUs"
+              area="frontend"/>
+    <template id="panth_advancedcontact_customer_confirmation"
+              label="Panth Contact — Customer Confirmation"
+              file="customer_confirmation.html"
+              type="html"
+              module="Panth_AdvancedContactUs"
+              area="frontend"/>
+</config>

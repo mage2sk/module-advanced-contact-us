@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="panth_contact_submission" resource="default" engine="innodb" comment="Panth Contact Form Submissions">
+        <column xsi:type="int" name="submission_id" unsigned="true" nullable="false" identity="true" comment="Submission ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Customer Name"/>
+        <column xsi:type="varchar" name="email" nullable="false" length="255" comment="Customer Email"/>
+        <column xsi:type="varchar" name="telephone" nullable="true" length="50" comment="Phone Number"/>
+        <column xsi:type="varchar" name="subject" nullable="true" length="500" comment="Subject"/>
+        <column xsi:type="text" name="message" nullable="false" comment="Message"/>
+        <column xsi:type="text" name="custom_fields" nullable="true" comment="Custom Fields JSON"/>
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false" default="0" comment="Status: 0=New, 1=Read, 2=Replied"/>
+        <column xsi:type="varchar" name="ip_address" nullable="true" length="45" comment="IP Address"/>
+        <column xsi:type="varchar" name="user_agent" nullable="true" length="500" comment="User Agent"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0" comment="Store ID"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="submission_id"/>
+        </constraint>
+        <index referenceId="PANTH_CONTACT_SUBMISSION_EMAIL" indexType="btree">
+            <column name="email"/>
+        </index>
+        <index referenceId="PANTH_CONTACT_SUBMISSION_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+        <index referenceId="PANTH_CONTACT_SUBMISSION_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+        <index referenceId="PANTH_CONTACT_SUBMISSION_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+    </table>
+</schema>

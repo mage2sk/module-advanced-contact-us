@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <panth_advancedcontact>
+            <general>
+                <enabled>1</enabled>
+                <page_title>Contact Us</page_title>
+                <success_message>Thank you for reaching out! We've received your message and will get back to you within 24 hours.</success_message>
+                <show_info>1</show_info>
+            </general>
+            <contact_info>
+                <email>hello@example.com</email>
+                <phone>1-800-SHOP-NOW</phone>
+                <address>Your Store Address</address>
+                <hours>Mon — Fri: 9:00 AM — 6:00 PM</hours>
+            </contact_info>
+            <fields>
+                <show_phone>1</show_phone>
+                <phone_required>0</phone_required>
+                <show_subject>1</show_subject>
+                <subject_required>0</subject_required>
+                <custom_fields></custom_fields>
+            </fields>
+            <email>
+                <recipient_email>hello@example.com</recipient_email>
+                <sender_email_identity>general</sender_email_identity>
+                <admin_template>panth_advancedcontact_admin_notification</admin_template>
+                <send_confirmation>1</send_confirmation>
+                <customer_template>panth_advancedcontact_customer_confirmation</customer_template>
+            </email>
+            <protection>
+                <honeypot>1</honeypot>
+                <rate_limit>1</rate_limit>
+                <max_per_hour>5</max_per_hour>
+                <min_time>2</min_time>
+            </protection>
+        </panth_advancedcontact>
+    </default>
+</config>

@@ -1,0 +1,14 @@
+{
+    "contact-primary": "#0D9488",
+    "contact-primary-hover": "#0F766E",
+    "contact-bg": "#FFFFFF",
+    "contact-card-bg": "#F9FAFB",
+    "contact-border": "#E5E7EB",
+    "contact-text": "#171717",
+    "contact-text-muted": "#6B7280",
+    "contact-input-bg": "#F9FAFB",
+    "contact-input-focus": "#0D9488",
+    "contact-radius": "12px",
+    "contact-success": "#10B981",
+    "contact-error": "#EF4444"
+}

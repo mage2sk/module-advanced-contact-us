@@ -1,0 +1,396 @@
+<?php
+declare(strict_types=1);
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+use Panth\AdvancedContactUs\ViewModel\ContactForm;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var ContactForm $viewModel */
+$viewModel = $block->getViewModel();
+$config = $viewModel->getConfig();
+
+if (!$config->isEnabled()) {
+    return;
+}
+
+$customFields = $config->getCustomFields();
+$formId = 'panth-contact-form';
+$successId = 'panth-contact-success';
+$formCardId = 'panth-contact-form-card';
+$errorId = 'panth-contact-error';
+?>
+
+<style>
+/* Panth Contact Form */
+.panth-contact { max-width: 1000px; margin: 0 auto; padding: 40px 20px; font-family: 'DM Sans', system-ui, sans-serif; }
+.panth-contact-grid { display: grid; grid-template-columns: 1fr 340px; gap: 40px; }
+.panth-contact-title { font-size: 32px; font-weight: 800; color: var(--contact-text, #171717); margin: 0 0 6px; }
+.panth-contact-subtitle { font-size: 15px; color: var(--contact-text-muted, #6B7280); margin: 0 0 32px; }
+
+/* Form Card */
+.panth-cf-card { background: var(--contact-bg, #fff); border: 1px solid var(--contact-border, #E5E7EB); border-radius: var(--contact-radius, 12px); padding: 32px; }
+.panth-cf-row { margin-bottom: 20px; }
+.panth-cf-row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panth-cf-label { display: block; font-size: 13px; font-weight: 600; color: var(--contact-text, #171717); margin-bottom: 6px; }
+.panth-cf-label .panth-cf-required { color: var(--contact-error, #EF4444); }
+.panth-cf-input { width: 100%; height: 46px; padding: 0 16px; border: 1.5px solid var(--contact-border, #E5E7EB); border-radius: 10px; font-size: 14px; color: var(--contact-text, #171717); background: var(--contact-input-bg, #F9FAFB); transition: border-color 0.15s, box-shadow 0.15s; outline: none; font-family: inherit; box-sizing: border-box; }
+.panth-cf-input:focus { border-color: var(--contact-input-focus, #0D9488); background: #fff; box-shadow: 0 0 0 3px rgba(13,148,136,0.08); }
+.panth-cf-textarea { width: 100%; min-height: 140px; padding: 14px 16px; border: 1.5px solid var(--contact-border, #E5E7EB); border-radius: 10px; font-size: 14px; color: var(--contact-text, #171717); background: var(--contact-input-bg, #F9FAFB); transition: border-color 0.15s; outline: none; resize: vertical; font-family: inherit; line-height: 1.6; box-sizing: border-box; }
+.panth-cf-textarea:focus { border-color: var(--contact-input-focus, #0D9488); background: #fff; box-shadow: 0 0 0 3px rgba(13,148,136,0.08); }
+.panth-cf-select { width: 100%; height: 46px; padding: 0 16px; border: 1.5px solid var(--contact-border, #E5E7EB); border-radius: 10px; font-size: 14px; color: var(--contact-text, #171717); background: var(--contact-input-bg, #F9FAFB); transition: border-color 0.15s; outline: none; font-family: inherit; cursor: pointer; appearance: auto; box-sizing: border-box; }
+.panth-cf-select:focus { border-color: var(--contact-input-focus, #0D9488); }
+.panth-cf-error { font-size: 12px; color: var(--contact-error, #EF4444); margin-top: 4px; display: none; }
+.panth-cf-input-error, .panth-cf-input-error:focus { border-color: var(--contact-error, #EF4444) !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.08) !important; }
+.panth-cf-input-valid { border-color: var(--contact-success, #10B981) !important; }
+.panth-cf-field-error { font-size: 12px; color: var(--contact-error, #EF4444); margin-top: 4px; display: none; }
+
+/* Radio/Checkbox */
+.panth-cf-choice { display: flex; align-items: center; gap: 8px; padding: 8px 0; font-size: 14px; color: var(--contact-text, #171717); cursor: pointer; }
+.panth-cf-choice input[type="radio"],
+.panth-cf-choice input[type="checkbox"] { accent-color: var(--contact-primary, #0D9488); width: 18px; height: 18px; cursor: pointer; }
+
+/* Submit Button */
+.panth-cf-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; height: 50px; padding: 0 32px; background: var(--contact-primary, #0D9488) !important; color: #fff !important; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; font-family: inherit; text-decoration: none; }
+.panth-cf-submit span { color: #fff !important; }
+.panth-cf-submit:hover { background: var(--contact-primary-hover, #0F766E) !important; color: #fff !important; }
+.panth-cf-submit:active { transform: scale(0.98); }
+.panth-cf-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Info Card */
+.panth-ci-card { background: var(--contact-card-bg, #F9FAFB); border: 1px solid var(--contact-border, #E5E7EB); border-radius: var(--contact-radius, 12px); padding: 28px; height: fit-content; position: sticky; top: 100px; }
+.panth-ci-title { font-size: 18px; font-weight: 700; color: var(--contact-text, #171717); margin: 0 0 20px; }
+.panth-ci-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #E5E7EB; }
+.panth-ci-item:last-child { border-bottom: none; }
+.panth-ci-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #F0FDFA; border-radius: 10px; color: var(--contact-primary, #0D9488); flex-shrink: 0; }
+.panth-ci-text { flex: 1; }
+.panth-ci-label { font-size: 12px; font-weight: 600; color: var(--contact-text-muted, #6B7280); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+.panth-ci-value { font-size: 14px; color: var(--contact-text, #171717); }
+.panth-ci-value a { color: var(--contact-primary, #0D9488); text-decoration: none; }
+.panth-ci-value a:hover { text-decoration: underline; }
+
+/* Success State */
+.panth-cf-success { text-align: center; padding: 60px 20px; }
+.panth-cf-success-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: #D1FAE5; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.panth-cf-success-title { font-size: 22px; font-weight: 700; color: var(--contact-text, #171717); margin: 0 0 8px; }
+.panth-cf-success-msg { font-size: 15px; color: var(--contact-text-muted, #6B7280); margin: 0; line-height: 1.6; max-width: 400px; margin: 0 auto; }
+
+/* Alert */
+.panth-cf-alert { padding: 12px 16px; border-radius: 10px; font-size: 14px; margin-bottom: 20px; display: none; }
+.panth-cf-alert-error { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+
+/* Honeypot */
+.panth-cf-hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .panth-contact { padding: 24px 16px; }
+    .panth-contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .panth-contact-title { font-size: 26px; }
+    .panth-cf-card { padding: 24px 20px; }
+    .panth-cf-row-half { grid-template-columns: 1fr; gap: 16px; }
+    .panth-ci-card { position: static; }
+}
+</style>
+
+<div class="panth-contact">
+    <h1 class="panth-contact-title"><?= $escaper->escapeHtml($config->getPageTitle()) ?></h1>
+    <p class="panth-contact-subtitle"><?= $escaper->escapeHtml(__("We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.")) ?></p>
+
+    <div class="panth-contact-grid">
+        <!-- Form Column -->
+        <div>
+            <!-- Success State (hidden by default) -->
+            <div class="panth-cf-card" id="<?= $escaper->escapeHtmlAttr($successId) ?>" style="display:none;">
+                <div class="panth-cf-success">
+                    <div class="panth-cf-success-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <p class="panth-cf-success-title"><?= $escaper->escapeHtml(__('Message Sent!')) ?></p>
+                    <p class="panth-cf-success-msg"><?= $escaper->escapeHtml($config->getSuccessMessage()) ?></p>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="panth-cf-card" id="<?= $escaper->escapeHtmlAttr($formCardId) ?>">
+                <div class="panth-cf-alert panth-cf-alert-error" id="<?= $escaper->escapeHtmlAttr($errorId) ?>"></div>
+
+                <form id="<?= $escaper->escapeHtmlAttr($formId) ?>" action="<?= $escaper->escapeUrl($viewModel->getFormAction()) ?>" method="post" novalidate>
+                    <!-- Honeypot -->
+                    <div class="panth-cf-hp" aria-hidden="true">
+                        <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="_timestamp" value="<?= (int) $viewModel->getTimestamp() ?>">
+                    <input type="hidden" name="form_key" value="<?= $escaper->escapeHtmlAttr($viewModel->getFormKey()) ?>">
+
+                    <div class="panth-cf-row panth-cf-row-half">
+                        <div>
+                            <label class="panth-cf-label"><?= $escaper->escapeHtml(__('Name')) ?> <span class="panth-cf-required">*</span></label>
+                            <input type="text" name="name" class="panth-cf-input" data-validate="required" value="<?= $escaper->escapeHtmlAttr($viewModel->getUserName()) ?>" placeholder="<?= $escaper->escapeHtmlAttr(__('Your full name')) ?>">
+                            <p class="panth-cf-field-error" data-error-for="name"><?= $escaper->escapeHtml(__('Name is required.')) ?></p>
+                        </div>
+                        <div>
+                            <label class="panth-cf-label"><?= $escaper->escapeHtml(__('Email')) ?> <span class="panth-cf-required">*</span></label>
+                            <input type="email" name="email" class="panth-cf-input" data-validate="email" value="<?= $escaper->escapeHtmlAttr($viewModel->getUserEmail()) ?>" placeholder="<?= $escaper->escapeHtmlAttr(__('you@example.com')) ?>">
+                            <p class="panth-cf-field-error" data-error-for="email"><?= $escaper->escapeHtml(__('Please enter a valid email.')) ?></p>
+                        </div>
+                    </div>
+
+                    <?php if ($config->showPhone() || $config->showSubject()): ?>
+                    <div class="panth-cf-row panth-cf-row-half">
+                        <?php if ($config->showPhone()): ?>
+                        <div>
+                            <label class="panth-cf-label"><?= $escaper->escapeHtml(__('Phone')) ?><?php if ($config->isPhoneRequired()): ?> <span class="panth-cf-required">*</span><?php endif; ?></label>
+                            <input type="tel" name="telephone" class="panth-cf-input" <?= $config->isPhoneRequired() ? 'data-validate="required"' : '' ?> placeholder="<?= $escaper->escapeHtmlAttr(__('+1 (555) 000-0000')) ?>">
+                            <?php if ($config->isPhoneRequired()): ?>
+                            <p class="panth-cf-field-error" data-error-for="telephone"><?= $escaper->escapeHtml(__('Phone is required.')) ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if ($config->showSubject()): ?>
+                        <div>
+                            <label class="panth-cf-label"><?= $escaper->escapeHtml(__('Subject')) ?><?php if ($config->isSubjectRequired()): ?> <span class="panth-cf-required">*</span><?php endif; ?></label>
+                            <input type="text" name="subject" class="panth-cf-input" <?= $config->isSubjectRequired() ? 'data-validate="required"' : '' ?> placeholder="<?= $escaper->escapeHtmlAttr(__('How can we help?')) ?>">
+                            <?php if ($config->isSubjectRequired()): ?>
+                            <p class="panth-cf-field-error" data-error-for="subject"><?= $escaper->escapeHtml(__('Subject is required.')) ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php foreach ($customFields as $field):
+                        $fieldKey = 'custom_' . preg_replace('/[^a-z0-9_]/', '_', strtolower($field['label']));
+                        $fieldRequired = !empty($field['required']);
+                    ?>
+                    <div class="panth-cf-row">
+                        <label class="panth-cf-label">
+                            <?= $escaper->escapeHtml($field['label']) ?>
+                            <?php if ($fieldRequired): ?><span class="panth-cf-required">*</span><?php endif; ?>
+                        </label>
+                        <?php if ($field['type'] === 'textarea'): ?>
+                            <textarea class="panth-cf-textarea" name="<?= $escaper->escapeHtmlAttr($fieldKey) ?>"
+                                      placeholder="<?= $escaper->escapeHtmlAttr($field['placeholder'] ?? '') ?>"
+                                      <?= $fieldRequired ? 'data-validate="required"' : '' ?>></textarea>
+                        <?php elseif ($field['type'] === 'select' && !empty($field['options'])): ?>
+                            <select class="panth-cf-select" name="<?= $escaper->escapeHtmlAttr($fieldKey) ?>" <?= $fieldRequired ? 'data-validate="required"' : '' ?>>
+                                <option value="">-- <?= $escaper->escapeHtml(__('Select')) ?> --</option>
+                                <?php foreach (explode(',', $field['options']) as $opt): ?>
+                                    <option value="<?= $escaper->escapeHtmlAttr(trim($opt)) ?>"><?= $escaper->escapeHtml(trim($opt)) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php elseif ($field['type'] === 'radio' && !empty($field['options'])): ?>
+                            <?php foreach (explode(',', $field['options']) as $opt): ?>
+                                <label class="panth-cf-choice">
+                                    <input type="radio" name="<?= $escaper->escapeHtmlAttr($fieldKey) ?>"
+                                           value="<?= $escaper->escapeHtmlAttr(trim($opt)) ?>">
+                                    <?= $escaper->escapeHtml(trim($opt)) ?>
+                                </label>
+                            <?php endforeach; ?>
+                        <?php elseif ($field['type'] === 'checkbox'): ?>
+                            <label class="panth-cf-choice">
+                                <input type="checkbox" name="<?= $escaper->escapeHtmlAttr($fieldKey) ?>" value="1">
+                                <?= $escaper->escapeHtml($field['placeholder'] ?? $field['label']) ?>
+                            </label>
+                        <?php else: ?>
+                            <input type="<?= $escaper->escapeHtmlAttr($field['type'] ?? 'text') ?>" class="panth-cf-input"
+                                   name="<?= $escaper->escapeHtmlAttr($fieldKey) ?>"
+                                   placeholder="<?= $escaper->escapeHtmlAttr($field['placeholder'] ?? '') ?>"
+                                   <?= $fieldRequired ? 'data-validate="required"' : '' ?>>
+                        <?php endif; ?>
+                        <?php if ($fieldRequired): ?>
+                        <p class="panth-cf-field-error" data-error-for="<?= $escaper->escapeHtmlAttr($fieldKey) ?>"><?= $escaper->escapeHtml(__('%1 is required.', $field['label'])) ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <?php endforeach; ?>
+
+                    <div class="panth-cf-row">
+                        <label class="panth-cf-label"><?= $escaper->escapeHtml(__('Message')) ?> <span class="panth-cf-required">*</span></label>
+                        <textarea class="panth-cf-textarea" name="message" data-validate="required" placeholder="<?= $escaper->escapeHtmlAttr(__('Tell us about your inquiry...')) ?>"></textarea>
+                        <p class="panth-cf-field-error" data-error-for="message"><?= $escaper->escapeHtml(__('Message is required.')) ?></p>
+                    </div>
+
+                    <button type="submit" class="panth-cf-submit" id="panth-contact-submit">
+                        <span><?= $escaper->escapeHtml(__('Send Message')) ?></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Info Column -->
+        <?php if ($config->showInfo()): ?>
+        <div>
+            <div class="panth-ci-card">
+                <h3 class="panth-ci-title"><?= $escaper->escapeHtml(__('Get in Touch')) ?></h3>
+                <?php if ($config->getContactEmail()): ?>
+                <div class="panth-ci-item">
+                    <div class="panth-ci-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div class="panth-ci-text">
+                        <div class="panth-ci-label"><?= $escaper->escapeHtml(__('Email')) ?></div>
+                        <div class="panth-ci-value"><a href="mailto:<?= $escaper->escapeHtmlAttr($config->getContactEmail()) ?>"><?= $escaper->escapeHtml($config->getContactEmail()) ?></a></div>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if ($config->getContactPhone()): ?>
+                <div class="panth-ci-item">
+                    <div class="panth-ci-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </div>
+                    <div class="panth-ci-text">
+                        <div class="panth-ci-label"><?= $escaper->escapeHtml(__('Phone')) ?></div>
+                        <div class="panth-ci-value"><a href="tel:<?= $escaper->escapeHtmlAttr($config->getContactPhone()) ?>"><?= $escaper->escapeHtml($config->getContactPhone()) ?></a></div>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if ($config->getContactAddress()): ?>
+                <div class="panth-ci-item">
+                    <div class="panth-ci-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <div class="panth-ci-text">
+                        <div class="panth-ci-label"><?= $escaper->escapeHtml(__('Address')) ?></div>
+                        <div class="panth-ci-value"><?= $escaper->escapeHtml($config->getContactAddress()) ?></div>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if ($config->getContactHours()): ?>
+                <div class="panth-ci-item">
+                    <div class="panth-ci-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div class="panth-ci-text">
+                        <div class="panth-ci-label"><?= $escaper->escapeHtml(__('Business Hours')) ?></div>
+                        <div class="panth-ci-value"><?= $escaper->escapeHtml($config->getContactHours()) ?></div>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('<?= $escaper->escapeJs($formId) ?>');
+    var successEl = document.getElementById('<?= $escaper->escapeJs($successId) ?>');
+    var formCard = document.getElementById('<?= $escaper->escapeJs($formCardId) ?>');
+    var errorEl = document.getElementById('<?= $escaper->escapeJs($errorId) ?>');
+    var submitBtn = document.getElementById('panth-contact-submit');
+
+    if (!form) return;
+
+    function showError(field) {
+        var el = document.querySelector('[data-error-for="' + field + '"]');
+        var input = form.querySelector('[name="' + field + '"]');
+        if (el) el.style.display = 'block';
+        if (input) {
+            input.classList.add('panth-cf-input-error');
+            input.classList.remove('panth-cf-input-valid');
+        }
+    }
+
+    function hideError(field) {
+        var el = document.querySelector('[data-error-for="' + field + '"]');
+        var input = form.querySelector('[name="' + field + '"]');
+        if (el) el.style.display = 'none';
+        if (input) {
+            input.classList.remove('panth-cf-input-error');
+            input.classList.add('panth-cf-input-valid');
+        }
+    }
+
+    function clearErrors() {
+        var errors = form.querySelectorAll('.panth-cf-field-error');
+        for (var i = 0; i < errors.length; i++) errors[i].style.display = 'none';
+        var inputs = form.querySelectorAll('.panth-cf-input-error');
+        for (var i = 0; i < inputs.length; i++) inputs[i].classList.remove('panth-cf-input-error');
+        errorEl.style.display = 'none';
+    }
+
+    function validate() {
+        var valid = true;
+        clearErrors();
+
+        var name = form.querySelector('[name="name"]');
+        if (!name || !name.value.trim()) { showError('name'); valid = false; }
+        else { hideError('name'); }
+
+        var email = form.querySelector('[name="email"]');
+        if (!email || !email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { showError('email'); valid = false; }
+        else { hideError('email'); }
+
+        var message = form.querySelector('[name="message"]');
+        if (!message || !message.value.trim()) { showError('message'); valid = false; }
+        else { hideError('message'); }
+
+        // Validate required custom/extra fields
+        var requiredFields = form.querySelectorAll('[data-validate="required"]');
+        for (var i = 0; i < requiredFields.length; i++) {
+            var f = requiredFields[i];
+            if (f.name === 'name' || f.name === 'email' || f.name === 'message') continue;
+            if (!f.value || !f.value.trim()) { showError(f.name); valid = false; }
+            else { hideError(f.name); }
+        }
+
+        return valid;
+    }
+
+    // Live validation on blur
+    form.addEventListener('focusout', function(e) {
+        var input = e.target;
+        if (!input.name) return;
+        if (input.dataset.validate === 'required' || input.name === 'name' || input.name === 'message') {
+            if (!input.value.trim()) showError(input.name);
+            else hideError(input.name);
+        }
+        if (input.name === 'email') {
+            if (!input.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) showError('email');
+            else hideError('email');
+        }
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!validate()) return;
+
+        submitBtn.disabled = true;
+        submitBtn.querySelector('span').textContent = '<?= $escaper->escapeJs(__('Sending...')) ?>';
+        errorEl.style.display = 'none';
+
+        var formData = new FormData(form);
+        formData.append('ajax', '1');
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.onload = function() {
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').textContent = '<?= $escaper->escapeJs(__('Send Message')) ?>';
+            try {
+                var data = JSON.parse(xhr.responseText);
+                if (data.success) {
+                    formCard.style.display = 'none';
+                    successEl.style.display = 'block';
+                } else {
+                    errorEl.textContent = data.message || '<?= $escaper->escapeJs(__('An error occurred.')) ?>';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = '<?= $escaper->escapeJs(__('Network error. Please try again.')) ?>';
+                errorEl.style.display = 'block';
+            }
+        };
+        xhr.onerror = function() {
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').textContent = '<?= $escaper->escapeJs(__('Send Message')) ?>';
+            errorEl.textContent = '<?= $escaper->escapeJs(__('Network error. Please try again.')) ?>';
+            errorEl.style.display = 'block';
+        };
+        xhr.send(formData);
+    });
+});
+</script>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove all default Magento/Hyva contact form blocks -->
+        <referenceBlock name="contactForm" remove="true"/>
+        <referenceBlock name="contact.details" remove="true"/>
+        <referenceContainer name="form.additional.info" remove="true"/>
+        <referenceContainer name="form.additional.after" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="panth.contact.form"
+                   template="Panth_AdvancedContactUs::form.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Panth\AdvancedContactUs\ViewModel\ContactForm</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

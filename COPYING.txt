@@ -1,0 +1,12 @@
+Panth Advanced Contact Us for Magento 2
+Copyright (c) 2025 Panth Infotech
+
+All rights reserved.
+
+This extension is distributed under a proprietary license.
+No part of this software may be reproduced, distributed, or transmitted
+in any form or by any means without the prior written permission of
+the copyright holder.
+
+For licensing inquiries: kishansavaliyakb@gmail.com
+Website: https://kishansavaliya.com
