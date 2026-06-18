@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.5 - 2026-06-18
+
+### Changed
+- Rewrote README to match gold template structure: Quick Answer block, gold template section order, accurate system.xml configuration table, corrected theme support claim (vanilla JS, not Alpine.js), live product page links, and updated SEO keywords.
+
 ## 1.0.0 - 2025-04-13
 
 ### Added

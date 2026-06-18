@@ -1,34 +1,49 @@
 <!-- SEO Meta -->
 <!--
-  Title: Panth Advanced Contact Us for Magento 2 | AJAX Contact Form, Submission Grid, Anti-Spam | Panth Infotech
-  Description: Panth Advanced Contact Us replaces the default Magento 2 contact form with a modern Luma-compatible vanilla JS AJAX contact page. Includes custom fields, 3-layer anti-spam (honeypot + time trap + IP rate limit), admin submission grid with status tracking, and transactional email notifications. Compatible with Magento 2.4.4 - 2.4.8 and PHP 8.1 - 8.4. Built by Top Rated Plus Magento developer Kishan Savaliya.
-  Keywords: magento 2 contact form, magento 2 advanced contact us, magento 2 ajax contact form, magento 2 contact form extension, magento 2 custom contact fields, magento 2 contact submissions grid, magento 2 contact form spam protection, magento 2 honeypot, magento 2 contact form rate limit, panth advanced contact us, hire magento developer, top rated plus upwork
+  Title: Magento 2 Advanced Contact Us Extension: AJAX Form, Custom Fields, Anti-Spam & Submission Grid | Panth Infotech
+  Description: Panth Advanced Contact Us replaces Magento 2's default contact form with a vanilla JS AJAX page. Includes unlimited custom fields, 3-layer anti-spam (honeypot + time trap + IP rate limit), admin submission grid with status tracking, and email notifications. Works on Magento 2.4.4 to 2.4.8 and PHP 8.1 to 8.4. Built by Top Rated Plus Magento developer Kishan Savaliya.
+  Keywords: magento 2 contact form, magento 2 advanced contact us, magento 2 ajax contact form, magento 2 contact form extension, magento 2 custom contact fields, magento 2 contact submissions grid, magento 2 contact form spam protection, magento 2 honeypot contact form, magento 2 contact form rate limit, magento 2 replace default contact form, panth advanced contact us, hire magento developer, top rated plus upwork, kishan savaliya
   Author: Kishan Savaliya (Panth Infotech)
-  Canonical: https://github.com/mage2sk/module-advanced-contact-us
+  Canonical: https://kishansavaliya.com/magento-2-advanced-contact-us.html
 -->
 
-# Panth Advanced Contact Us — Magento 2 AJAX Contact Form with Custom Fields, Anti-Spam & Submission Grid
+# Magento 2 Advanced Contact Us: AJAX Form, Custom Fields, Anti-Spam and Submission Grid
 
 [![Magento 2.4.4 - 2.4.8](https://img.shields.io/badge/Magento-2.4.4%20--%202.4.8-orange?logo=magento&logoColor=white)](https://magento.com)
 [![PHP 8.1 - 8.4](https://img.shields.io/badge/PHP-8.1%20--%208.4-blue?logo=php&logoColor=white)](https://php.net)
-[![License Proprietary](https://img.shields.io/badge/License-Proprietary-blue)]()
+[![Luma](https://img.shields.io/badge/Themes-Luma-14b8a6)](https://magento.com)
+[![Live Demo & Details](https://img.shields.io/badge/Live%20Demo%20%26%20Details-magento--2--advanced--contact--us-0D9488?style=flat)](https://kishansavaliya.com/magento-2-advanced-contact-us.html)
 [![Packagist](https://img.shields.io/badge/Packagist-mage2kishan%2Fmodule--advanced--contact--us-orange?logo=packagist&logoColor=white)](https://packagist.org/packages/mage2kishan/module-advanced-contact-us)
 [![Upwork Top Rated Plus](https://img.shields.io/badge/Upwork-Top%20Rated%20Plus-14a800?logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~016dd1767321100e21)
-[![Panth Infotech Agency](https://img.shields.io/badge/Agency-Panth%20Infotech-14a800?logo=upwork&logoColor=white)](https://www.upwork.com/agencies/1881421506131960778/)
 [![Website](https://img.shields.io/badge/Website-kishansavaliya.com-0D9488)](https://kishansavaliya.com)
-[![Get a Quote](https://img.shields.io/badge/Get%20a%20Quote-Free%20Estimate-DC2626)](https://kishansavaliya.com/get-quote)
 
-> **Replace Magento 2's default contact form** with a conversion-optimized AJAX contact page. Vanilla JS (zero jQuery dependency) for native Luma speed, unlimited custom fields, 3-layer anti-spam (honeypot + time-based trap + IP rate limiting), full admin submission grid with status tracking, and transactional email notifications for both admin and customer.
+> **Replace Magento 2's default contact form with a modern AJAX page.** Panth Advanced Contact Us adds unlimited custom fields, silent three-layer anti-spam, a full admin submission grid with New/Read/Replied status tracking, and email notifications for both admin and customer. Built on vanilla JavaScript with no jQuery dependency.
 
-**Panth Advanced Contact Us** transforms Magento 2's stock contact page into a feature-rich, modern, conversion-ready contact experience. Customers get an AJAX-submitted form (no page reloads) with real-time validation, a clean contact-info sidebar, and auto-prefill for logged-in users. Admins get a proper submission grid with New/Read/Replied status tracking instead of lost emails, plus three independent spam defences that stop bots without CAPTCHAs frustrating real customers.
-
-Built on pure vanilla JavaScript for native Luma themes, fully MEQP compliant, and tested across Magento 2.4.4 — 2.4.8 with PHP 8.1 — 8.4.
+**Product page:** [kishansavaliya.com/magento-2-advanced-contact-us.html](https://kishansavaliya.com/magento-2-advanced-contact-us.html)
 
 ---
 
-## 🚀 Need Custom Magento 2 Development?
+## Quick Answer
 
-> **Get a free quote for your project in 24 hours** — custom modules, Hyva themes, performance optimization, M1→M2 migrations, and Adobe Commerce Cloud.
+**What is Panth Advanced Contact Us?** It is a Magento 2 contact form extension that replaces the default `/contact` page with a vanilla JS AJAX form, stores every submission in the database, and gives admins a grid to track and respond to leads.
+
+**What does it add to my store?**
+
+- An **AJAX contact form** that submits without a full page reload, with real-time client-side validation.
+- **Unlimited custom fields** (text, textarea, select, radio, checkbox, email, tel) to capture exactly the data you need.
+- **Three-layer anti-spam** using a honeypot field, a time-based trap, and per-IP rate limiting, all without CAPTCHA.
+- An **admin submission grid** under Panth Extensions > Contact Us > Submissions with New/Read/Replied status tracking.
+- **Email notifications** to admin on every submission and an optional auto-reply to the customer.
+
+**Which themes are supported?** The frontend form is built on vanilla JavaScript and works on **Luma** and any Luma-based theme. It also renders on Hyva storefronts, though it does not use Alpine.js or Tailwind.
+
+**What does it need?** Magento 2.4.4 to 2.4.8, PHP 8.1 to 8.4, and the free `mage2kishan/module-core` package.
+
+---
+
+## Need Custom Magento 2 Development?
+
+> **Get a free quote for your project in 24 hours** for custom modules, Hyva themes, performance work, M1 to M2 migrations, and Adobe Commerce Cloud.
 
 <p align="center">
   <a href="https://kishansavaliya.com/get-quote">
@@ -40,7 +55,7 @@ Built on pure vanilla JavaScript for native Luma themes, fully MEQP compliant, a
 <tr>
 <td width="50%" align="center">
 
-### 🏆 Kishan Savaliya
+### Kishan Savaliya
 **Top Rated Plus on Upwork**
 
 [![Hire on Upwork](https://img.shields.io/badge/Hire%20on%20Upwork-Top%20Rated%20Plus-14a800?style=for-the-badge&logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~016dd1767321100e21)
@@ -51,7 +66,7 @@ Adobe Certified • Hyva Specialist
 </td>
 <td width="50%" align="center">
 
-### 🏢 Panth Infotech Agency
+### Panth Infotech Agency
 **Magento Development Team**
 
 [![Visit Agency](https://img.shields.io/badge/Visit%20Agency-Panth%20Infotech-14a800?style=for-the-badge&logo=upwork&logoColor=white)](https://www.upwork.com/agencies/1881421506131960778/)
@@ -69,85 +84,79 @@ Performance • SEO • Adobe Commerce Cloud
 
 ## Table of Contents
 
-- [Why Panth Advanced Contact Us](#why-panth-advanced-contact-us)
+- [Who Is It For](#who-is-it-for)
 - [Key Features](#key-features)
 - [Compatibility](#compatibility)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Custom Fields](#custom-fields)
-- [Admin Submission Grid](#admin-submission-grid)
-- [Anti-Spam Protection](#anti-spam-protection)
-- [Email Notifications](#email-notifications)
-- [Troubleshooting](#troubleshooting)
+- [How It Works](#how-it-works)
 - [FAQ](#faq)
 - [Support](#support)
+- [About Panth Infotech](#about-panth-infotech)
+- [Quick Links](#quick-links)
 
 ---
 
-## Why Panth Advanced Contact Us
+## Who Is It For
 
-Magento 2's native contact form is a lowest-common-denominator feature: full page reload on submit, no custom fields, no anti-spam beyond basic form keys, no admin-side record of submissions, and no status tracking. Merchants routinely lose leads because contact emails land in spam folders or get buried in inboxes with no way to know which messages have been answered.
-
-**Panth Advanced Contact Us fixes every one of those problems:**
-
-1. **No more lost leads** — every submission is stored in the database with a searchable admin grid
-2. **No more spam flood** — honeypot, time trap, and IP rate limiting block bots automatically without CAPTCHAs
-3. **No more generic form** — add unlimited custom fields (dropdowns, checkboxes, phone, subject)
-4. **No more page reloads** — AJAX submission with inline success/error messages
-5. **No more "did they reply?"** — three-state status tracking (New / Read / Replied) keeps your team organized
+- **Stores that lose leads** because contact emails land in spam or get buried in inboxes with no tracking. Every submission is saved to the database.
+- **Merchants who need more than name and message** on the contact form. You can add dropdowns, checkboxes, phone fields, inquiry-type radios, and more without custom code.
+- **Sites getting hit by contact form spam** and do not want to burden real customers with a CAPTCHA. The three-layer silent spam filter handles it automatically.
+- **Teams that need workflow tracking** across multiple staff members. The New/Read/Replied status system keeps everyone on the same page.
+- **Luma storefronts** that want a faster, AJAX-submitted contact page with no full page reload.
 
 ---
 
 ## Key Features
 
-### Modern Storefront Form
+### Modern AJAX Contact Form
 
-- **Vanilla JavaScript AJAX submission** — zero jQuery, zero page reload, native Luma speed
-- **Real-time client-side validation** — required fields, email format, phone format
-- **Logged-in customer pre-fill** — auto-populates name and email for authenticated users
-- **Contact info sidebar** — display email, phone, address, and business hours alongside the form
-- **Configurable page title & success message** — match your brand voice
-- **Toggleable phone & subject fields** — with independent "required" flags
+- **Vanilla JavaScript AJAX submission** with no jQuery dependency and no full page reload.
+- **Real-time client-side validation** for required fields, email format, and phone format.
+- **Logged-in customer auto-fill** populates name and email for authenticated users automatically.
+- **Contact info sidebar** to display your email, phone, address, and business hours next to the form.
+- **Configurable page title and success message** so you can match your store's tone.
+- **Toggleable phone and subject fields**, each with an independent required flag.
 
 ### Unlimited Custom Fields
 
-- **7 field types** — text, textarea, select, radio, checkbox, email, tel
-- **Per-field configuration** — label, placeholder, required status
-- **Options support** — comma-separated choices for select / radio / checkbox fields
-- **JSON storage** — custom field values stored as JSON in the submission record
-- **Admin view rendering** — custom fields displayed cleanly in submission detail view and email notifications
+- **Seven field types**: text, textarea, select, radio, checkbox, email, and tel.
+- **Per-field settings** for label, placeholder, required status, and options.
+- **Comma-separated options** for select, radio, and checkbox fields.
+- **JSON storage** in the `panth_contact_submission` table so no schema change is needed when you add fields.
+- **Admin view rendering** shows each custom field with its label in the submission detail and email notifications.
 
-### 3-Layer Anti-Spam
+### Three-Layer Anti-Spam
 
-- **Honeypot field** — hidden input invisible to users but filled by bots
-- **Time-based trap** — minimum fill-time threshold (default 2 seconds) rejects instant bot submissions
-- **IP rate limiting** — configurable max submissions per IP per hour (default 5)
-- **No CAPTCHA friction** — real customers never see a challenge, bots get silently rejected
+- **Honeypot field**: a hidden input that real users never see. If a bot fills it, the submission is dropped silently.
+- **Time-based trap**: the server checks how long the form took to fill. Submissions faster than the configured threshold (default 2 seconds) are rejected.
+- **IP rate limiting**: caps submissions per IP per rolling hour window (default 5). Exceeding the limit returns a friendly message; no real customer is locked out for long.
+- **No CAPTCHA friction**: real customers never see a challenge.
 
 ### Admin Submission Grid
 
-- **Dedicated submission grid** — view all contact submissions under `Panth Extensions → Contact Submissions`
-- **Full filtering & sorting** — by name, email, subject, status, and date
-- **3-state status tracking** — `New` (orange), `Read` (blue), `Replied` (green)
-- **Auto-mark-as-read** — submissions flip to "Read" status when opened in admin
-- **Bulk actions** — mass delete, mass status change
-- **Custom field display** — view all custom field values in the submission detail page
+- **Dedicated grid** at Panth Extensions > Contact Us > Submissions.
+- **Full filtering and sorting** by name, email, subject, status, and date.
+- **Three-state status**: New (orange), Read (blue), Replied (green). Submissions flip to Read automatically when opened.
+- **Bulk actions** for mass delete and mass status change.
+- **Export to CSV and XML** using Magento's standard grid export.
+- **Custom field values** displayed in the submission detail view.
 
 ### Email Notifications
 
-- **Admin notification email** — sent to configurable recipient on every submission
-- **Customer confirmation email** — optional auto-reply to the customer
-- **Sender identity selection** — general, sales, support, or custom sender
-- **Customizable templates** — both admin and customer email templates editable via `Marketing → Email Templates`
-- **Reply-To set to customer** — one-click reply from your mailbox
+- **Admin notification** sent to the configured recipient on every successful submission, with name, email, phone, subject, message, custom fields, and a direct admin link.
+- **Customer auto-reply** (optional) sent immediately after submission to confirm receipt and set expectations.
+- **Reply-To set to customer email** so one click in your mailbox goes straight to the customer.
+- **Sender identity selection** from General, Sales, Support, or Custom, matching your store's email addresses.
+- **Editable email templates** at Marketing > Email Templates.
 
-### Quality & Security
+### Quality and Security
 
-- **MEQP compliant** — passes Adobe's Magento Extension Quality Program
-- **CSRF-protected** — Magento form key validation on every submission
-- **XSS-safe output** — all stored values escaped on render
-- **SQL-injection-safe** — uses Magento's standard repository + collection pattern
-- **Luma theme optimized** — works on stock Luma and any Luma child theme
+- **CSRF-protected**: Magento form key validation on every submission.
+- **XSS-safe output**: all stored values are escaped on render.
+- **SQL-injection-safe**: uses Magento's standard repository and collection pattern.
+- **MEQP-style code**: constructor dependency injection only, no ObjectManager.
+- **Translation ready**: every user-facing string uses Magento's `__()` function.
 
 ---
 
@@ -157,18 +166,12 @@ Magento 2's native contact form is a lowest-common-denominator feature: full pag
 |---|---|
 | Magento Open Source | 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.8 |
 | Adobe Commerce | 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.8 |
-| Adobe Commerce Cloud | 2.4.4 — 2.4.8 |
+| Adobe Commerce Cloud | 2.4.4 to 2.4.8 |
 | PHP | 8.1.x, 8.2.x, 8.3.x, 8.4.x |
 | MySQL | 8.0+ |
 | MariaDB | 10.4+ |
 | Luma Theme | Native support (vanilla JS) |
-| Panth_Core | ^1.0 (required) |
-
-Tested on:
-- Magento 2.4.8-p4 with PHP 8.4
-- Magento 2.4.7 with PHP 8.3
-- Magento 2.4.6 with PHP 8.2
-- Magento 2.4.4 with PHP 8.1
+| Required Dependency | `mage2kishan/module-core` (free) |
 
 ---
 
@@ -185,13 +188,14 @@ bin/magento setup:static-content:deploy -f
 bin/magento cache:flush
 ```
 
-`Panth_Core` is pulled in automatically as a dependency.
+`Panth_Core` is pulled in automatically as a Composer dependency.
 
 ### Manual Installation via ZIP
 
-1. Download the latest release from [Packagist](https://packagist.org/packages/mage2kishan/module-advanced-contact-us) or the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com)
-2. Extract to `app/code/Panth/AdvancedContactUs/`
-3. Run the commands above starting from `bin/magento module:enable`
+1. Download the latest release from [Packagist](https://packagist.org/packages/mage2kishan/module-advanced-contact-us) or from the [product page](https://kishansavaliya.com/magento-2-advanced-contact-us.html).
+2. Extract it to `app/code/Panth/AdvancedContactUs/` in your Magento install.
+3. Make sure `Panth_Core` is installed too (required dependency).
+4. Run the commands above starting from `bin/magento module:enable`.
 
 ### Verify Installation
 
@@ -200,174 +204,74 @@ bin/magento module:status Panth_AdvancedContactUs
 # Expected: Module is enabled
 ```
 
-Then visit the frontend `/contact` URL — you should see the new form. In admin, the new menu entry lives at `Panth Extensions → Contact Submissions`.
+After install, visit `/contact` on the frontend. You should see the new AJAX form. In admin, the new menu entry is at:
+
+```
+Admin -> Panth Extensions -> Contact Us -> Submissions
+```
 
 ---
 
 ## Configuration
 
-All settings live at **Stores → Configuration → Panth Extensions → Advanced Contact Us**.
+Go to **Stores -> Configuration -> Panth Extensions -> Advanced Contact Us**.
 
-### General
+### General Settings
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Module | Yes | Master toggle. When off, Magento's native contact form is used. |
-| Page Title | Contact Us | Heading shown on the contact page. |
-| Success Message | Thanks, we'll get back to you soon. | Inline confirmation shown after successful submission. |
-| Show Contact Info Sidebar | Yes | Display the sidebar with email / phone / address / hours. |
+| Setting | Group | Default | Description |
+|---|---|---|---|
+| Enable Module | General | Yes | Master toggle. When off, Magento's native contact form is used. |
+| Page Title | General | Contact Us | Heading shown on the contact page. |
+| Success Message | General | (default text) | Inline confirmation shown after successful submission. |
+| Show Contact Info Sidebar | General | Yes | Show the sidebar with email, phone, address, and business hours. |
 
 ### Contact Info Sidebar
 
-| Setting | Description |
-|---|---|
-| Email | Public contact email shown in sidebar (click-to-email) |
-| Phone | Public phone number (click-to-call) |
-| Address | Physical / mailing address, multi-line |
-| Business Hours | Plain text operating hours |
+| Setting | Group | Default | Description |
+|---|---|---|---|
+| Email Address | Contact Info | (empty) | Public contact email shown in the sidebar, click to email. |
+| Phone Number | Contact Info | (empty) | Public phone number, click to call. |
+| Address | Contact Info | (empty) | Physical or mailing address, multi-line. |
+| Business Hours | Contact Info | (empty) | Plain text operating hours. |
 
 ### Form Fields
 
-| Setting | Default | Description |
-|---|---|---|
-| Show Phone Field | Yes | Display the phone input on the form. |
-| Phone Required | No | Make phone a mandatory field. |
-| Show Subject Field | Yes | Display the subject input. |
-| Subject Required | No | Make subject a mandatory field. |
-| Custom Fields | — | Dynamic row grid to define unlimited custom fields. |
+| Setting | Group | Default | Description |
+|---|---|---|---|
+| Show Phone Field | Form Fields | Yes | Display the phone input on the form. |
+| Phone Required | Form Fields | No | Make the phone field mandatory. |
+| Show Subject Field | Form Fields | Yes | Display the subject input. |
+| Subject Required | Form Fields | No | Make the subject field mandatory. |
+| Custom Fields | Form Fields | (none) | Dynamic row grid to define unlimited custom fields. |
 
 ### Email Settings
 
-| Setting | Description |
-|---|---|
-| Recipient Email | Where admin notifications are sent. |
-| Sender Identity | General / Sales / Support / Custom — matches `Stores → Configuration → General → Store Email Addresses`. |
-| Send Customer Confirmation | Send auto-reply to the customer after successful submission. |
-| Admin Email Template | Transactional template for admin notification. |
-| Customer Email Template | Transactional template for the customer auto-reply. |
+| Setting | Group | Default | Description |
+|---|---|---|---|
+| Admin Notification Email | Email Settings | (store email) | Where admin notifications are sent on each submission. |
+| Sender Email Identity | Email Settings | General | Sender used for outgoing emails: General, Sales, Support, or Custom. |
+| Send Customer Confirmation | Email Settings | No | Send an auto-reply to the customer after successful submission. |
 
-### Anti-Spam
+### Bot Protection
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Honeypot | Yes | Add a hidden trap field that only bots fill. |
-| Enable Rate Limiting | Yes | Throttle submissions per IP. |
-| Max Per Hour | 5 | Max submissions accepted per IP per hour. |
-| Minimum Fill Time (seconds) | 2 | Reject submissions faster than this threshold. |
+| Setting | Group | Default | Description |
+|---|---|---|---|
+| Enable Honeypot | Bot Protection | Yes | Add a hidden trap field that only bots fill. |
+| Enable Rate Limiting | Bot Protection | Yes | Limit submissions per IP address per hour. |
+| Max Submissions Per Hour (per IP) | Bot Protection | 5 | Reject IPs that exceed this count in a rolling hour. |
+| Minimum Form Fill Time (seconds) | Bot Protection | 2 | Reject submissions faster than this threshold. |
 
 ---
 
-## Custom Fields
+## How It Works
 
-Add unlimited custom fields to capture exactly the data you need — subject dropdowns, inquiry-type radios, consent checkboxes, reference numbers, and more.
-
-**To add a custom field:**
-
-1. Go to **Stores → Configuration → Panth Extensions → Advanced Contact Us → Form Fields → Custom Fields**
-2. Click **Add** to create a new row
-3. Choose a **Field Type** — `text`, `textarea`, `select`, `radio`, `checkbox`, `email`, or `tel`
-4. Set **Label** (e.g. `Inquiry Type`)
-5. Set **Placeholder** (optional) for text-style fields
-6. Toggle **Required** if the field must be filled
-7. For `select` / `radio` / `checkbox`, enter **Options** as comma-separated values (e.g. `Sales, Support, Billing, Partnership`)
-8. Click **Save Config** and run `bin/magento cache:flush`
-
-Submissions store all custom-field values as JSON in the `panth_contact_submission` table. The admin submission detail view renders each field with its label and value, and the admin notification email includes them in the message body.
-
----
-
-## Admin Submission Grid
-
-Navigate to **Panth Extensions → Contact Submissions** in the admin sidebar.
-
-### Grid Columns
-
-- **ID** — submission identifier
-- **Name** — customer name
-- **Email** — customer email (mailto link)
-- **Phone** — customer phone (if supplied)
-- **Subject** — subject line (if supplied)
-- **Status** — colour-coded `New` / `Read` / `Replied` badge
-- **Submitted At** — timestamp
-- **Action** — view / delete
-
-### Status Lifecycle
-
-| Status | Colour | When Set |
-|---|---|---|
-| New | Orange | Automatically on submission |
-| Read | Blue | Automatically when opened in admin |
-| Replied | Green | Manually by admin after responding |
-
-### Bulk Actions
-
-- **Delete** — mass-delete selected submissions
-- **Change Status** — mass-update status for follow-up workflow
-
-Filter by any column, export to CSV / XML, and search across name, email, and subject.
-
----
-
-## Anti-Spam Protection
-
-Panth Advanced Contact Us uses a **silent, layered defence** strategy — no CAPTCHA friction for real customers, but three independent bot-detection mechanisms:
-
-### Layer 1: Honeypot Field
-
-A hidden input field (`display:none` via CSS) is added to the form. Real users never see it or fill it. Automated bots parse the HTML and fill every input — any non-empty honeypot value causes the submission to be rejected silently (the bot sees a "success" response but no record is created).
-
-### Layer 2: Time-Based Trap
-
-When the form loads, a hidden timestamp is set. On submission, the server calculates elapsed time. If the form was submitted faster than the configured threshold (default 2 seconds), the submission is rejected — no human can read a form, type a name, email, and message in under 2 seconds.
-
-### Layer 3: IP Rate Limiting
-
-The module tracks submission counts per IP address per rolling hour window. If an IP exceeds the configured threshold (default 5 / hour), further submissions return a friendly "too many requests" message. This stops distributed spam from a single source without locking out legitimate users.
-
-All three layers can be independently enabled / disabled and tuned in configuration.
-
----
-
-## Email Notifications
-
-### Admin Notification
-
-Sent to the configured **Recipient Email** on every successful submission. Contains:
-
-- Submitter name, email, phone, subject
-- Full message body
-- All custom field values with labels
-- Submission timestamp and ID
-- Direct admin link to view the submission
-
-The `Reply-To` header is set to the customer's email address, so clicking reply in your mailbox goes straight to the customer — no copy-paste needed.
-
-### Customer Confirmation (Optional)
-
-When **Send Customer Confirmation** is enabled, the customer receives an auto-reply immediately after submission. Useful for:
-
-- Confirming their message was received
-- Setting expectations (e.g. "We reply within 24 business hours")
-- Providing support phone / chat alternatives
-
-Both templates are editable at **Marketing → Email Templates** — load the default, customize the HTML and text versions, and assign in the module's Email Settings.
-
----
-
-## Troubleshooting
-
-| Issue | Cause | Resolution |
-|---|---|---|
-| Form not appearing on `/contact` | Module disabled or cache not flushed | `bin/magento module:enable Panth_AdvancedContactUs && bin/magento cache:flush` |
-| Submissions not saving | Setup upgrade not run | `bin/magento setup:upgrade` to install the database schema |
-| Admin emails not arriving | Magento SMTP not configured | Verify `Stores → Configuration → Advanced → System → Mail Sending Settings` or install an SMTP module |
-| Customer auto-reply not sending | Customer confirmation toggle off | Enable **Send Customer Confirmation** in Email Settings |
-| Bot protection blocking real users | Thresholds too tight | Increase **Max Per Hour**, lower **Minimum Fill Time**, or disable individual layers |
-| Custom fields not showing | Cache not flushed after field add | `bin/magento cache:flush` after saving configuration |
-| AJAX submission returns 403 | Form key expired | Reload the page or ensure full-page cache is properly serving form keys |
-| `Panth_Core not found` error | Dependency missing | `composer require mage2kishan/module-core && bin/magento setup:upgrade` |
-
-For persistent issues, enable debug mode in `Panth Extensions → Core Settings` and check `var/log/panth_advanced_contact_us.log`.
+1. The module registers a route that handles the `/contact` page, replacing Magento's default contact controller.
+2. On page load, the form captures a timestamp and a honeypot field is rendered hidden via CSS.
+3. On submit, vanilla JavaScript sends the form data over AJAX to the Post controller.
+4. The server checks all three anti-spam layers in order: honeypot, time elapsed, and IP rate limit. Any failure returns a silent rejection.
+5. If the submission passes, it is saved to the `panth_contact_submission` table with status New and the admin notification email is sent.
+6. If customer confirmation is enabled, an auto-reply is sent to the customer's email address.
+7. The admin opens Panth Extensions > Contact Us > Submissions to view, filter, sort, and update the status of each record.
 
 ---
 
@@ -375,35 +279,39 @@ For persistent issues, enable debug mode in `Panth Extensions → Core Settings`
 
 ### Does this replace Magento's native contact form?
 
-Yes. When the module is enabled, the `/contact` URL is handled by Panth Advanced Contact Us and the stock `Magento_Contact` form is bypassed. Disable the module to revert to the native form — no data loss.
+Yes. When the module is enabled, the `/contact` URL is handled by Panth Advanced Contact Us and the stock `Magento_Contact` form is bypassed. Disable the module to go back to the native form without any data loss.
 
-### Does it work with Hyva themes?
+### Does it work on Hyva themes?
 
-This specific module ships a **Luma-compatible vanilla JS** frontend. It will render and function on Hyva, but for the Alpine.js + Tailwind native Hyva experience, use the Hyva-specific variant in the Panth suite. Both share the same admin grid and backend logic.
+The frontend form is built on vanilla JavaScript, not Alpine.js or Tailwind. It will render and submit correctly on a Hyva storefront, but it does not use Hyva's component system or theme styles. The admin grid and backend logic work the same on any theme.
 
 ### Will it conflict with reCAPTCHA?
 
-No. Panth Advanced Contact Us uses its own silent anti-spam. You can additionally enable Magento's native Google reCAPTCHA v3 on the contact form for a fourth layer of protection — the module respects the standard reCAPTCHA hook.
+No. Panth Advanced Contact Us uses its own silent anti-spam. You can also leave Magento's native reCAPTCHA on the contact form enabled for an extra layer. The module respects the standard reCAPTCHA hook.
 
 ### Can I export submissions?
 
-Yes. The admin submission grid supports Magento's standard **Export to CSV / XML** action. Bulk select submissions and choose Export from the mass-action dropdown.
+Yes. The admin grid supports Magento's standard Export to CSV and XML action. Select submissions and choose Export from the mass-action dropdown.
 
-### Are submissions GDPR-compliant?
+### How are custom field values stored?
 
-The module stores only what the customer submitted. To support data-subject deletion requests, use the **Bulk Delete** mass action or call the repository's `deleteById()` method from a custom GDPR handler. Submission retention duration is unrestricted — add a cron job to purge old entries if needed.
+All custom field values are saved as JSON in the `custom_fields` column of the `panth_contact_submission` table. The admin submission detail page reads and renders each field with its label. The admin email notification also includes the custom field values.
 
 ### Can I add a file upload field?
 
-Not in the base module. For file attachments, use **Panth Order Attachments** (for orders) or **Panth Dynamic Forms** (for general form builder with file uploads). Custom file fields can be added via a small extension plugin.
+Not in this module. For file attachments on the contact form, a small extension plugin can be added on top of the base module.
 
 ### How do I customize the form layout?
 
-Copy the template from `view/frontend/templates/form.phtml` into your theme at `app/design/frontend/<Vendor>/<theme>/Panth_AdvancedContactUs/templates/form.phtml` and edit. All styling is via standard CSS — no build step required.
+Copy the template from `view/frontend/templates/form.phtml` to your theme at `app/design/frontend/<Vendor>/<theme>/Panth_AdvancedContactUs/templates/form.phtml` and edit it. The form uses plain CSS with no build step required.
 
-### Does it support multi-store / multi-language?
+### Does it support multi-store setups?
 
-Yes. All settings respect Magento's scope hierarchy (default → website → store view), and all user-facing strings pass through Magento's `__()` translation function. Translate the module to any language via `i18n/<locale>.csv`.
+Yes. All settings respect Magento's scope hierarchy: default, website, and store view. Every user-facing string uses Magento's `__()` translation function, so you can translate it with a `i18n/<locale>.csv` file.
+
+### Does it need Panth Core?
+
+Yes. `mage2kishan/module-core` is a free required dependency. Composer installs it for you automatically.
 
 ---
 
@@ -411,6 +319,7 @@ Yes. All settings respect Magento's scope hierarchy (default → website → sto
 
 | Channel | Contact |
 |---|---|
+| Product Page | [kishansavaliya.com/magento-2-advanced-contact-us.html](https://kishansavaliya.com/magento-2-advanced-contact-us.html) |
 | Email | kishansavaliyakb@gmail.com |
 | Website | [kishansavaliya.com](https://kishansavaliya.com) |
 | WhatsApp | +91 84012 70422 |
@@ -418,11 +327,11 @@ Yes. All settings respect Magento's scope hierarchy (default → website → sto
 | Upwork (Top Rated Plus) | [Hire Kishan Savaliya](https://www.upwork.com/freelancers/~016dd1767321100e21) |
 | Upwork Agency | [Panth Infotech](https://www.upwork.com/agencies/1881421506131960778/) |
 
-Response time: 1-2 business days. Priority support available via Upwork contract.
+Response time: 1-2 business days.
 
-### 💼 Need Custom Magento Development?
+### Need Custom Magento Development?
 
-Looking for **custom Magento module development**, **Hyva theme customization**, **store migrations**, or **performance optimization**? Get a free quote in 24 hours:
+Looking for **custom Magento module development**, **Hyva theme work**, **store migrations**, or **performance tuning**? Get a free quote in 24 hours:
 
 <p align="center">
   <a href="https://kishansavaliya.com/get-quote">
@@ -439,63 +348,46 @@ Looking for **custom Magento module development**, **Hyva theme customization**,
     <img src="https://img.shields.io/badge/Visit-Panth%20Infotech%20Agency-14a800?style=for-the-badge&logo=upwork&logoColor=white" alt="Visit Agency" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://kishansavaliya.com">
-    <img src="https://img.shields.io/badge/Visit%20Website-kishansavaliya.com-0D9488?style=for-the-badge" alt="Visit Website" />
+  <a href="https://kishansavaliya.com/magento-2-advanced-contact-us.html">
+    <img src="https://img.shields.io/badge/View%20Product%20Page-magento--2--advanced--contact--us-0D9488?style=for-the-badge" alt="View Product Page" />
   </a>
 </p>
-
-**Specializations:**
-
-- 🛒 **Magento 2 Module Development** — custom extensions following MEQP standards
-- 🎨 **Hyva Theme Development** — Alpine.js + Tailwind CSS, lightning-fast storefronts
-- 🖌️ **Luma Theme Customization** — pixel-perfect designs, responsive layouts
-- ⚡ **Performance Optimization** — Core Web Vitals, page speed, caching strategies
-- 🔍 **Magento SEO** — structured data, hreflang, sitemaps, AI-generated meta
-- 🛍️ **Checkout Optimization** — one-page checkout, conversion rate optimization
-- 🚀 **M1 to M2 Migrations** — data migration, custom feature porting
-- ☁️ **Adobe Commerce Cloud** — deployment, CI/CD, performance tuning
-- 🤖 **AI-Powered eCommerce** — OpenAI/Claude integration for content, search, recommendations
-- 🔌 **Third-party Integrations** — payment gateways, ERP, CRM, marketing tools
-
-**Industries served:** Fashion & Apparel, Electronics, Health & Beauty, Food & Beverage, Home & Garden, B2B Wholesale, Multi-vendor Marketplaces.
-
----
-
-## License
-
-Panth Advanced Contact Us is distributed under a proprietary license — see `LICENSE.txt`. Single-store use per installation; contact us for multi-store enterprise licensing.
 
 ---
 
 ## About Panth Infotech
 
-Built and maintained by **Kishan Savaliya** — [kishansavaliya.com](https://kishansavaliya.com) — a **Top Rated Plus** Magento developer on Upwork with 10+ years of eCommerce experience.
+Built and maintained by **Kishan Savaliya** ([kishansavaliya.com](https://kishansavaliya.com)), a **Top Rated Plus** Magento developer on Upwork with 10+ years of eCommerce experience.
 
-**Panth Infotech** is a Magento 2 development agency specializing in high-quality, security-focused extensions and themes for both Hyva and Luma storefronts. Our extension suite covers SEO, performance, checkout, product presentation, customer engagement, and store management — over 34 modules built to MEQP standards and tested across Magento 2.4.4 to 2.4.8.
+**Panth Infotech** is a Magento 2 development agency that builds high quality, security focused extensions and themes for both Hyva and Luma storefronts. The extension suite covers SEO, performance, checkout, product presentation, customer engagement, and store management, with each module built to MEQP standards and tested across Magento 2.4.4 to 2.4.8.
 
-Browse the full extension catalog on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com) or [Packagist](https://packagist.org/packages/mage2kishan/).
+Browse the full extension catalog on our [Magento extensions page](https://kishansavaliya.com/magento-extensions.html) or on [Packagist](https://packagist.org/packages/mage2kishan/).
 
-### Quick Links
+---
 
-- 🌐 **Website:** [kishansavaliya.com](https://kishansavaliya.com)
-- 💬 **Get a Quote:** [kishansavaliya.com/get-quote](https://kishansavaliya.com/get-quote)
-- 👨‍💻 **Upwork Profile (Top Rated Plus):** [upwork.com/freelancers/~016dd1767321100e21](https://www.upwork.com/freelancers/~016dd1767321100e21)
-- 🏢 **Upwork Agency:** [upwork.com/agencies/1881421506131960778](https://www.upwork.com/agencies/1881421506131960778/)
-- 📦 **Packagist:** [packagist.org/packages/mage2kishan/module-advanced-contact-us](https://packagist.org/packages/mage2kishan/module-advanced-contact-us)
-- 🐙 **GitHub:** [github.com/mage2sk/module-advanced-contact-us](https://github.com/mage2sk/module-advanced-contact-us)
-- 🛒 **Adobe Marketplace:** [commercemarketplace.adobe.com](https://commercemarketplace.adobe.com)
-- 📧 **Email:** kishansavaliyakb@gmail.com
-- 📱 **WhatsApp:** +91 84012 70422
+## Quick Links
+
+| Resource | Link |
+|---|---|
+| **Product Page** | [magento-2-advanced-contact-us.html](https://kishansavaliya.com/magento-2-advanced-contact-us.html) |
+| **Packagist** | [mage2kishan/module-advanced-contact-us](https://packagist.org/packages/mage2kishan/module-advanced-contact-us) |
+| **GitHub** | [mage2sk/module-advanced-contact-us](https://github.com/mage2sk/module-advanced-contact-us) |
+| **Website** | [kishansavaliya.com](https://kishansavaliya.com) |
+| **Free Quote** | [kishansavaliya.com/get-quote](https://kishansavaliya.com/get-quote) |
+| **Upwork (Top Rated Plus)** | [Hire Kishan Savaliya](https://www.upwork.com/freelancers/~016dd1767321100e21) |
+| **Upwork Agency** | [Panth Infotech](https://www.upwork.com/agencies/1881421506131960778/) |
+| **Email** | kishansavaliyakb@gmail.com |
+| **WhatsApp** | +91 84012 70422 |
 
 ---
 
 <p align="center">
-  <strong>Ready to upgrade your Magento 2 contact page?</strong><br/>
-  <a href="https://kishansavaliya.com/get-quote">
-    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Get%20Started%20%E2%86%92-Free%20Quote%20in%2024h-DC2626?style=for-the-badge" alt="Get Started" />
+  <strong>Ready to give your contact page a proper upgrade?</strong><br/>
+  <a href="https://kishansavaliya.com/magento-2-advanced-contact-us.html">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20See%20Advanced%20Contact%20Us%20%E2%86%92-Product%20Page%20%26%20Demo-DC2626?style=for-the-badge" alt="See Advanced Contact Us" />
   </a>
 </p>
 
 ---
 
-**SEO Keywords:** magento 2 contact form, magento 2 advanced contact us, magento 2 ajax contact form, magento 2 contact form extension, magento 2 custom contact fields, magento 2 contact us page, magento 2 contact form with custom fields, magento 2 contact submissions grid, magento 2 contact form database storage, magento 2 contact form spam protection, magento 2 honeypot contact form, magento 2 contact form rate limit, magento 2 contact form no captcha, magento 2 contact form without recaptcha, magento 2 replace default contact form, magento 2 contact form vanilla javascript, magento 2 luma contact form, magento 2 contact form email notification, magento 2 contact form auto reply, magento 2 contact form admin grid, magento 2 contact form status tracking, magento 2 contact form bulk actions, magento 2 contact form gdpr, magento 2 lead capture form, magento 2 inquiry form extension, panth advanced contact us, panth infotech contact form, mage2kishan contact us, magento 2.4.8 contact form, php 8.4 magento contact, hire magento developer upwork, top rated plus magento freelancer, kishan savaliya magento, panth infotech magento, custom magento development india, magento 2 hyva development, magento 2 MEQP compliant module
+**SEO Keywords:** magento 2 contact form, magento 2 advanced contact us, magento 2 ajax contact form, magento 2 contact form extension, magento 2 custom contact fields, magento 2 contact us page, magento 2 contact form with custom fields, magento 2 contact submissions grid, magento 2 contact form database storage, magento 2 contact form spam protection, magento 2 honeypot contact form, magento 2 contact form rate limit, magento 2 contact form no captcha, magento 2 contact form without recaptcha, magento 2 replace default contact form, magento 2 contact form vanilla javascript, magento 2 luma contact form, magento 2 contact form email notification, magento 2 contact form auto reply, magento 2 contact form admin grid, magento 2 contact form status tracking, magento 2 contact form bulk actions, magento 2 contact form gdpr, magento 2 lead capture form, magento 2 inquiry form extension, panth advanced contact us, panth infotech contact form, mage2kishan advanced contact us, magento 2.4.8 contact form, php 8.4 magento contact, hire magento developer upwork, top rated plus magento freelancer, kishan savaliya magento, panth infotech magento, custom magento development, magento 2 contact form module
