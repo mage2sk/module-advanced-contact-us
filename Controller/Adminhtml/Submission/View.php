@@ -41,7 +41,6 @@ class View extends Action
             return $this->resultRedirectFactory->create()->setPath('*/*/');
         }
 
-        // Mark as read
         if ((int) $submission->getData('status') === Submission::STATUS_NEW) {
             $submission->setData('status', Submission::STATUS_READ);
             $this->submissionResource->save($submission);

@@ -75,21 +75,18 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
         try {
             $post = $this->request->getPostValue();
 
-            // Bot Protection 1: Honeypot
             if ($this->config->isHoneypotEnabled() && !empty($post['website_url'])) {
-                return $this->successResponse($isAjax); // Silent rejection
+                return $this->successResponse($isAjax);
             }
 
-            // Bot Protection 2: Time-based
             $minTime = $this->config->getMinTime();
             if ($minTime > 0 && isset($post['_timestamp'])) {
                 $elapsed = time() - (int) $post['_timestamp'];
                 if ($elapsed < $minTime) {
-                    return $this->successResponse($isAjax); // Silent rejection
+                    return $this->successResponse($isAjax);
                 }
             }
 
-            // Bot Protection 3: Rate limiting
             if ($this->config->isRateLimitEnabled()) {
                 $ip = $this->request->getServer('REMOTE_ADDR');
                 $maxPerHour = $this->config->getMaxPerHour();
@@ -106,10 +103,8 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
                 }
             }
 
-            // Validate required fields
             $this->validate($post);
 
-            // Collect custom fields
             $customFieldsData = [];
             $configuredFields = $this->config->getCustomFields();
             foreach ($configuredFields as $field) {
@@ -120,7 +115,6 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
                 }
             }
 
-            // Save to database
             $submission = $this->submissionFactory->create();
             $submission->setData([
                 'name' => trim($post['name']),
@@ -136,7 +130,6 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
             ]);
             $this->submissionResource->save($submission);
 
-            // Build custom fields HTML for email
             $customFieldsHtml = '';
             if (!empty($customFieldsData)) {
                 foreach ($customFieldsData as $label => $value) {
@@ -149,7 +142,6 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
                 }
             }
 
-            // Prepare email data
             $emailData = [
                 'name' => trim($post['name']),
                 'email' => trim($post['email']),
@@ -162,8 +154,6 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
                 'submitted_at' => date('Y-m-d H:i:s'),
             ];
 
-            // Queue emails via Magento's async email (if available) or send sync
-            // Uses Magento's built-in async email queue when configured
             try {
                 $this->mail->sendAdminNotification($emailData);
             } catch (\Exception $e) {
@@ -176,7 +166,6 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
             }
 
             return $this->successResponse($isAjax);
-
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
             return $this->errorResponse($isAjax, $e->getMessage());
         } catch (\Exception $e) {

@@ -81,14 +81,14 @@ class Config
         if (empty($value)) {
             return [];
         }
-        // ArraySerialized returns array, JSON string is fallback
+
         if (is_string($value)) {
             $value = json_decode($value, true);
         }
         if (!is_array($value)) {
             return [];
         }
-        // Filter out the __empty key that Magento adds
+
         return array_filter($value, function ($item) {
             return is_array($item) && !empty($item['label']);
         });

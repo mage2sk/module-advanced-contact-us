@@ -50,17 +50,11 @@ class SubmissionView implements ArgumentInterface
         return $this->submission;
     }
 
-    /**
-     * @return array<int, string>
-     */
     public function getStatusLabels(): array
     {
         return [0 => 'New', 1 => 'Read', 2 => 'Replied'];
     }
 
-    /**
-     * @return array<int, string>
-     */
     public function getStatusColors(): array
     {
         return [0 => '#F59E0B', 1 => '#3B82F6', 2 => '#10B981'];
