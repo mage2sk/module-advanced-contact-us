@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.7
+
+### Changed
+- Replaced typographic characters (em dashes, curly quotes, ellipsis) with plain ASCII punctuation. No functional changes.
+
 ## 1.0.6 - 2026-07-07
 
 ### Changed

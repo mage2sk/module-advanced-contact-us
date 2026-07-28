@@ -93,7 +93,7 @@
                 <field id="honeypot" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Honeypot</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>Hidden field that traps bots — no impact on real users.</comment>
+                    <comment>Hidden field that traps bots - no impact on real users.</comment>
                 </field>
                 <field id="rate_limit" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Rate Limiting</label>

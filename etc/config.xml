@@ -13,7 +13,7 @@
                 <email>hello@example.com</email>
                 <phone>1-800-SHOP-NOW</phone>
                 <address>Your Store Address</address>
-                <hours>Mon — Fri: 9:00 AM — 6:00 PM</hours>
+                <hours>Mon - Fri: 9:00 AM - 6:00 PM</hours>
             </contact_info>
             <fields>
                 <show_phone>1</show_phone>

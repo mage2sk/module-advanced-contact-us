@@ -10,40 +10,40 @@ Navigate to **Stores > Configuration > Panth Extensions > Advanced Contact Us**.
 
 ### General Settings
 
-- **Enable Module** — master toggle
-- **Page Title** — contact page heading (default: "Contact Us")
-- **Success Message** — message shown after successful submission
-- **Show Contact Info** — display sidebar with contact details
+- **Enable Module** - master toggle
+- **Page Title** - contact page heading (default: "Contact Us")
+- **Success Message** - message shown after successful submission
+- **Show Contact Info** - display sidebar with contact details
 
 ### Contact Information (Sidebar)
 
-- **Email** — contact email address
-- **Phone** — phone number
-- **Address** — physical address
-- **Business Hours** — operating hours text
+- **Email** - contact email address
+- **Phone** - phone number
+- **Address** - physical address
+- **Business Hours** - operating hours text
 
 ### Form Fields
 
-- **Show Phone Field** — display phone number field
-- **Phone Required** — make phone field mandatory
-- **Show Subject Field** — display subject line field
-- **Subject Required** — make subject field mandatory
-- **Custom Fields** — add unlimited custom fields with type, label, required status, placeholder, and options (for select/radio/checkbox)
+- **Show Phone Field** - display phone number field
+- **Phone Required** - make phone field mandatory
+- **Show Subject Field** - display subject line field
+- **Subject Required** - make subject field mandatory
+- **Custom Fields** - add unlimited custom fields with type, label, required status, placeholder, and options (for select/radio/checkbox)
 
 ### Email Settings
 
-- **Recipient Email** — admin notification recipient
-- **Sender Identity** — email sender (general, sales, support, custom)
-- **Send Customer Confirmation** — send confirmation email to customer
-- **Admin Email Template** — template for admin notifications
-- **Customer Email Template** — template for customer confirmations
+- **Recipient Email** - admin notification recipient
+- **Sender Identity** - email sender (general, sales, support, custom)
+- **Send Customer Confirmation** - send confirmation email to customer
+- **Admin Email Template** - template for admin notifications
+- **Customer Email Template** - template for customer confirmations
 
 ### Bot Protection
 
-- **Enable Honeypot** — hidden field trap for bots
-- **Enable Rate Limiting** — limit submissions per IP
-- **Max Per Hour** — maximum submissions per IP per hour (default: 5)
-- **Minimum Fill Time** — minimum seconds to fill form (default: 2)
+- **Enable Honeypot** - hidden field trap for bots
+- **Enable Rate Limiting** - limit submissions per IP
+- **Max Per Hour** - maximum submissions per IP per hour (default: 5)
+- **Minimum Fill Time** - minimum seconds to fill form (default: 2)
 
 ## Admin Submission Management
 
@@ -57,9 +57,9 @@ Navigate to **Panth Extensions > Contact Submissions** in the admin menu.
 
 ### Submission Status
 
-- **New** (orange) — fresh submission, not yet viewed
-- **Read** (blue) — viewed by admin
-- **Replied** (green) — admin has responded
+- **New** (orange) - fresh submission, not yet viewed
+- **Read** (blue) - viewed by admin
+- **Replied** (green) - admin has responded
 
 Submissions are automatically marked as "Read" when viewed in admin.
 
@@ -77,7 +77,7 @@ Custom field values are stored as JSON and displayed in admin submission view an
 
 ## Troubleshooting
 
-- **Form not showing** — ensure module is enabled and cache is flushed
-- **Emails not sending** — verify recipient email and Magento email configuration
-- **Bot protection too aggressive** — increase max per hour or decrease minimum fill time
-- **Custom fields not appearing** — flush cache after adding new fields
+- **Form not showing** - ensure module is enabled and cache is flushed
+- **Emails not sending** - verify recipient email and Magento email configuration
+- **Bot protection too aggressive** - increase max per hour or decrease minimum fill time
+- **Custom fields not appearing** - flush cache after adding new fields
