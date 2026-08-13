@@ -7,6 +7,7 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Message\ManagerInterface;
@@ -31,6 +32,7 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
     private SubmissionResource $submissionResource;
     private CollectionFactory $collectionFactory;
     private LoggerInterface $logger;
+    private ResponseInterface $response;
 
     public function __construct(
         RequestInterface $request,
@@ -43,7 +45,8 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
         SubmissionFactory $submissionFactory,
         SubmissionResource $submissionResource,
         CollectionFactory $collectionFactory,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        ResponseInterface $response
     ) {
         $this->request = $request;
         $this->redirectFactory = $redirectFactory;
@@ -56,6 +59,17 @@ class Post implements HttpPostActionInterface, CsrfAwareActionInterface
         $this->submissionResource = $submissionResource;
         $this->collectionFactory = $collectionFactory;
         $this->logger = $logger;
+        $this->response = $response;
+    }
+
+    public function getRequest(): RequestInterface
+    {
+        return $this->request;
+    }
+
+    public function getResponse(): ResponseInterface
+    {
+        return $this->response;
     }
 
     public function createCsrfValidationException(RequestInterface $request): ?InvalidRequestException

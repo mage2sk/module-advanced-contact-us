@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8 - 2026-08-13
+
+### Fixed
+- The contact POST controller now exposes `getRequest()` and `getResponse()`. Core observers bound to `controller_action_predispatch_contact_index_post` (Magento reCAPTCHA and legacy captcha) call these on the controller action; without them every contact submission failed with a 500 whenever reCAPTCHA for the contact form was enabled.
+
 ## 1.0.7
 
 ### Changed
