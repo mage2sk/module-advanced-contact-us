@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.9 - 2026-08-13
+
+### Changed
+- Re-release of 1.0.8; no code changes.
+
 ## 1.0.8 - 2026-08-13
 
 ### Fixed
