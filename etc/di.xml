@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="panth_contact_submission_listing_data_source" xsi:type="string">Panth\AdvancedContactUs\Model\ResourceModel\Submission\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Panth\AdvancedContactUs\Model\ResourceModel\Submission\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">panth_contact_submission</argument>
+            <argument name="resourceModel" xsi:type="string">Panth\AdvancedContactUs\Model\ResourceModel\Submission</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Panth\AdvancedContactUs\Ui\SubmissionGridFulltextFilter" type="Panth\AdvancedContactUs\Ui\Component\Listing\LikeFulltextFilter">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="name" xsi:type="string">main_table.name</item>
+                <item name="email" xsi:type="string">main_table.email</item>
+                <item name="subject" xsi:type="string">main_table.subject</item>
+                <item name="telephone" xsi:type="string">main_table.telephone</item>
+                <item name="message" xsi:type="string">main_table.message</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Panth\AdvancedContactUs\Ui\SubmissionGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Panth\AdvancedContactUs\Ui\SubmissionGridFulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Panth\AdvancedContactUs\Ui\SubmissionGridReporting" type="Magento\Framework\View\Element\UiComponent\DataProvider\Reporting">
+        <arguments>
+            <argument name="filterPool" xsi:type="object">Panth\AdvancedContactUs\Ui\SubmissionGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Panth\AdvancedContactUs\Ui\SubmissionGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="reporting" xsi:type="object">Panth\AdvancedContactUs\Ui\SubmissionGridReporting</argument>
+        </arguments>
+    </virtualType>
+</config>

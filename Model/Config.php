@@ -1,0 +1,193 @@
+<?php
+declare(strict_types=1);
+
+namespace Panth\AdvancedContactUs\Model;
+
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
+
+class Config
+{
+    private ScopeConfigInterface $scopeConfig;
+
+    public function __construct(ScopeConfigInterface $scopeConfig)
+    {
+        $this->scopeConfig = $scopeConfig;
+    }
+
+    public function isEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/general/enabled', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getPageTitle(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/general/page_title', ScopeInterface::SCOPE_STORE) ?: 'Contact Us';
+    }
+
+    public function getSuccessMessage(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/general/success_message', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function showInfo(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/general/show_info', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getContactEmail(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/contact_info/email', ScopeInterface::SCOPE_STORE) ?: 'hello@example.com';
+    }
+
+    public function getContactPhone(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/contact_info/phone', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getContactAddress(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/contact_info/address', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getContactHours(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/contact_info/hours', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function showPhone(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/fields/show_phone', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function isPhoneRequired(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/fields/phone_required', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function showSubject(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/fields/show_subject', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function isSubjectRequired(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/fields/subject_required', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getCustomFields(): array
+    {
+        $value = $this->scopeConfig->getValue('panth_advancedcontact/fields/custom_fields', ScopeInterface::SCOPE_STORE);
+        if (empty($value)) {
+            return [];
+        }
+
+        if (is_string($value)) {
+            $value = json_decode($value, true);
+        }
+        if (!is_array($value)) {
+            return [];
+        }
+
+        $fields = array_filter($value, function ($item) {
+            return is_array($item) && !empty($item['label']);
+        });
+
+        $used = [];
+        foreach ($fields as $index => $field) {
+            $base = self::buildCustomFieldKey((string) $field['label']);
+            $key = $base;
+            $suffix = 2;
+            while (isset($used[$key])) {
+                $key = $base . '_' . $suffix++;
+            }
+            $used[$key] = true;
+            $fields[$index]['key'] = $key;
+        }
+
+        return $fields;
+    }
+
+    public static function buildCustomFieldKey(string $label): string
+    {
+        return 'custom_' . preg_replace('/[^a-z0-9_]/', '_', strtolower($label));
+    }
+
+    public function getRecipientEmail(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/email/recipient_email', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getSenderIdentity(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/email/sender_email_identity', ScopeInterface::SCOPE_STORE) ?: 'general';
+    }
+
+    public function getAdminTemplate(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/email/admin_template', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function sendConfirmation(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/email/send_confirmation', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getConfirmationMaxPerRecipient(): int
+    {
+        return $this->readLimit('panth_advancedcontact/email/confirmation_max_per_recipient', 2);
+    }
+
+    public function getConfirmationMaxPerIp(): int
+    {
+        return $this->readLimit('panth_advancedcontact/email/confirmation_max_per_ip', 5);
+    }
+
+    private function readLimit(string $path, int $default): int
+    {
+        $value = $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
+        if ($value === null || trim((string) $value) === '') {
+            return $default;
+        }
+        return max(0, (int) $value);
+    }
+
+    public function getCustomerTemplate(): string
+    {
+        return (string) $this->scopeConfig->getValue('panth_advancedcontact/email/customer_template', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function isHoneypotEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/protection/honeypot', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function isContentGuardEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/protection/content_guard', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getBlockedTerms(): string
+    {
+        return (string) ($this->scopeConfig->getValue('panth_advancedcontact/protection/blocked_terms', ScopeInterface::SCOPE_STORE) ?? '');
+    }
+
+    public function isRateLimitEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag('panth_advancedcontact/protection/rate_limit', ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getMaxPerHour(): int
+    {
+        return (int) ($this->scopeConfig->getValue('panth_advancedcontact/protection/max_per_hour', ScopeInterface::SCOPE_STORE) ?: 5);
+    }
+
+    public function getMinTime(): int
+    {
+        $value = $this->scopeConfig->getValue('panth_advancedcontact/protection/min_time', ScopeInterface::SCOPE_STORE);
+        if ($value === null || trim((string) $value) === '') {
+            return 2;
+        }
+        return max(0, (int) $value);
+    }
+}

@@ -1,0 +1,12 @@
+.grid-severity-minor.panth-contact-status-read,
+.grid-severity-minor.panth-contact-status-read span {
+    background: #f1f1f1;
+    border-color: #adadad;
+    color: #303030;
+}
+.grid-severity-notice.panth-contact-status-new,
+.grid-severity-notice.panth-contact-status-new span {
+    background: #e8f4fb;
+    border-color: #007bdb;
+    color: #303030;
+}
