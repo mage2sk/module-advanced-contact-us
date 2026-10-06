@@ -1,0 +1,128 @@
+<?php
+/** @var \Magento\Backend\Block\Template $block */
+/** @var \Panth\AdvancedContactUs\ViewModel\SubmissionView $viewModel */
+$viewModel = $block->getViewModel();
+$submission = $viewModel->getSubmission();
+
+if (!$submission) {
+    return;
+}
+
+$statusLabels = $viewModel->getStatusLabels();
+$status = (int) $submission->getData('status');
+$severity = [0 => 'grid-severity-notice panth-contact-status-new', 1 => 'grid-severity-minor panth-contact-status-read', 2 => 'grid-severity-notice'];
+$replySubject = 'Re: ' . ($submission->getData('subject') ?: 'Your inquiry');
+$statusActions = [];
+if ($block->getAuthorization()->isAllowed('Panth_AdvancedContactUs::submission_status')) {
+    if ($status !== 2) {
+        $statusActions[2] = __('Mark as Replied');
+    }
+    if ($status === 2) {
+        $statusActions[1] = __('Mark as Read');
+    }
+    $statusActions[0] = __('Mark as New');
+}
+?>
+
+<style>
+.panth-submission-view .panth-sv-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 30px; }
+.panth-submission-view .panth-sv-toolbar form { display: inline; margin: 0; }
+.panth-submission-view .admin__page-section { margin-bottom: 40px; }
+.panth-submission-view .admin__table-secondary th { width: 30%; }
+.panth-submission-view [class*="grid-severity-"] { display: inline-block; min-width: 90px; padding: 0 12px; }
+.panth-submission-view .panth-sv-message { white-space: pre-wrap; word-break: break-word; line-height: 1.6; }
+</style>
+
+<div class="panth-submission-view">
+    <div class="panth-sv-toolbar">
+        <a href="<?= $block->escapeUrl($block->getUrl('panthcontact/submission/index')) ?>" class="action-default back"><span><?= $block->escapeHtml(__('Back')) ?></span></a>
+        <form method="post"
+              action="<?= $block->escapeUrl($block->getUrl('panthcontact/submission/delete', ['id' => $submission->getId()])) ?>"
+              onsubmit="return confirm('<?= $block->escapeJs(__('Are you sure you want to delete this submission?')) ?>')">
+            <input type="hidden" name="form_key" value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+            <button type="submit" class="action-default delete"><span><?= $block->escapeHtml(__('Delete')) ?></span></button>
+        </form>
+        <a href="mailto:<?= $block->escapeHtmlAttr($submission->getData('email')) ?>?subject=<?= $block->escapeHtmlAttr(rawurlencode($replySubject)) ?>" class="action-primary"><span><?= $block->escapeHtml(__('Reply via Email')) ?></span></a>
+        <?php foreach ($statusActions as $newStatus => $statusLabel): ?>
+        <form method="post" action="<?= $block->escapeUrl($block->getUrl('panthcontact/submission/setStatus', ['id' => $submission->getId()])) ?>">
+            <input type="hidden" name="form_key" value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+            <input type="hidden" name="status" value="<?= (int) $newStatus ?>"/>
+            <button type="submit" class="action-secondary panth-sv-status-<?= (int) $newStatus ?>"><span><?= $block->escapeHtml($statusLabel) ?></span></button>
+        </form>
+        <?php endforeach; ?>
+    </div>
+
+    <section class="admin__page-section">
+        <div class="admin__page-section-title">
+            <span class="title"><?= $block->escapeHtml(__('Message')) ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <table class="admin__table-secondary">
+                <tbody>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Status')) ?></th>
+                        <td><span class="<?= $block->escapeHtmlAttr($severity[$status] ?? 'grid-severity-minor') ?>"><span><?= $block->escapeHtml(__($statusLabels[$status] ?? 'Unknown')) ?></span></span></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Name')) ?></th>
+                        <td><?= $block->escapeHtml($submission->getData('name')) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Email')) ?></th>
+                        <td><a href="mailto:<?= $block->escapeHtmlAttr($submission->getData('email')) ?>"><?= $block->escapeHtml($submission->getData('email')) ?></a></td>
+                    </tr>
+                    <?php if ($submission->getData('telephone')): ?>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Phone')) ?></th>
+                        <td><?= $block->escapeHtml($submission->getData('telephone')) ?></td>
+                    </tr>
+                    <?php endif; ?>
+                    <?php if ($submission->getData('subject')): ?>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Subject')) ?></th>
+                        <td><?= $block->escapeHtml($submission->getData('subject')) ?></td>
+                    </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Message')) ?></th>
+                        <td><div class="panth-sv-message"><?= $block->escapeHtml($submission->getData('message')) ?></div></td>
+                    </tr>
+                    <?php
+                    $customFields = $submission->getData('custom_fields');
+                    $fields = $customFields ? json_decode((string) $customFields, true) : null;
+                    if (is_array($fields)):
+                        foreach ($fields as $label => $value): ?>
+                    <tr>
+                        <th><?= $block->escapeHtml($label) ?></th>
+                        <td><?= $block->escapeHtml(is_array($value) ? implode(', ', $value) : $value) ?></td>
+                    </tr>
+                    <?php endforeach; endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="admin__page-section">
+        <div class="admin__page-section-title">
+            <span class="title"><?= $block->escapeHtml(__('Submission Details')) ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <table class="admin__table-secondary">
+                <tbody>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('IP Address')) ?></th>
+                        <td><?= $block->escapeHtml($submission->getData('ip_address') ?: __('N/A')) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Submitted')) ?></th>
+                        <td><?= $block->escapeHtml($viewModel->formatSubmittedAt($submission->getData('created_at'))) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $block->escapeHtml(__('Store')) ?></th>
+                        <td><?= $block->escapeHtml($viewModel->getStoreLabel((int) $submission->getData('store_id'))) ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
